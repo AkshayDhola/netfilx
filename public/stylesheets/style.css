@@ -1,0 +1,35 @@
+@font-face {
+    font-family: net;
+    src: url(BebasNeue-Regular.ttf);
+}
+@font-face {
+    font-family: bu;
+    src: url(nbinternationalproreg-webfont.ttf);
+}
+html,
+body {
+    
+    font-family: bu;    
+}
+  
+h1{
+    font-family: net;
+}
+
+.mouse {
+    pointer-events: none;
+    position: fixed;
+    z-index: 999;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: skyblue;
+    z-index: 1;
+    mix-blend-mode: difference;
+}
+h1[data-hover]{
+    z-index: 2;
+}
+#trailer::-webkit-scrollbar{
+    display: none;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Netfilx</title>
+</head>
+
+<body class="bg-black" >
+    <div class="w-full bg-black overflow-hidden">
+        <div class="max-w-screen-xl mx-auto h-11 flex justify-between items-center max-sm:pt-3">
+            <h2 class="text-sky-300 text-xl max-sm:text-2xl max-sm:pl-7">Netfilx</h2>
+            <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="open">/</button>
+            <!-- <div class="flex gap-14 max-sm:flex max-sm:justify-center max-sm:gap-7 max-sm:items-center max-sm:mt-7 max-sm:w-full max-sm:h-32 max-sm:bg-black max-sm:absolute max-sm:z-[999] max-sm:-translate-y-32 max-sm:transition-transform max-sm:ease-in-out max-sm:duration-500" id="menu">
+                <form action="/getper" method="post" class="max-sm:flex max-sm:gap-1">
+                <input class="outline-none text-sky-300 bg-transparent px-5 max-sm:text-[19px]" placeholder="Search  Movies " name="name"
+                    type="text" />
+                <input class="text-white text-xl hover:text-sky-300 max-sm:text-2xl" type="submit" value="&#x2197;" />
+                </form>
+                <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="close">/\</button>
+            </div> -->
+        </div>
+    <div class="max-w-screen-xl mx-auto h-fit flex justify-between mt-11 max-sm:relative max-sm:h-fit">
+        <div class="w-44 flex flex-col gap-2 max-sm:w-96 max-sm:pl-7 max-sm:bg-black max-sm:py-24 max-sm:absolute max-sm:z-[999] max-sm:-translate-x-96 max-sm:transition-transform max-sm:ease-in-out max-sm:duration-500" id="menu">
+            <div>
+                <h2 class="text-lg text-white max-sm:text-xl"><%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %>(<span class="text-sm text-green-500"><%= user.email %></span>)</h2>
+            </div>
+            <div class="relative h-64 max-sm:w-2/3 overflow-hidden">
+                <div class="flex gap-7 mb-2">
+                    <h2 class="text-white text-lg">Watch Histroy</h2>
+                    <button class="text-white w-7 h-7 text-lg">&#x2936;</button>
+                </div>
+                <div class="px-2 flex flex-col">
+                <% histroy.forEach(element => { %>
+                    <a href="/movie/<%= element[1]  %>" class="text-white text-md border-b pt-1"><%= element[0] %></a>
+                <%  }); %>
+                </div>            
+            </div>
+            <div class="max-sm:flex max-sm:flex-col max-sm:gap-4">
+                <div class="mt-5">
+                    <a href="/explore" class="text-white text-lg">Back to Movies</a>
+                </div>
+                <div class="mt-1">
+                    <a href="/logout" class="text-white text-lg">Log out</a>
+                </div>
+                <div class="mt-1">
+                    <h2 class="text-white text-lg">Subscription</h2>
+                </div>
+                <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="close">/\</button>
+            </div>
+        </div>
+        <div class="w-4/5 flex gap-7 max-sm:flex-col max-sm:px-7 max-sm:w-full">
+            <div>
+                <h2 class="text-white text-2xl pb-3">Get Subscription</h2>
+                <h2 class="text-white text-lg max-sm:text-md"><span class="text-green-400">&#10003; </span> No commitments, cancel anytime.</h2>
+                <h2 class="text-white text-lg max-sm:text-md"><span class="text-green-400">&#10003; </span> Everything on Netflix for one low price.</h2>
+                <h2 class="text-white text-lg max-sm:text-md"><span class="text-green-400">&#10003; </span> No ads and no extra fees. Ever.</h2>
+            </div>
+            <div class="w-52 h-52 bg-red-400 max-sm:mx-5">
+                <img class="w-full h-full object-cover" src="/images/qrCode.jpeg" alt="">
+            </div>
+            <div class="w-72 h-96 px-3">
+                <h2 class="text-white text-xl border-b-2">Plans that's right for you</h2>
+                <div class="mt-5 flex flex-col gap-3">
+                    <div class="flex justify-between px-3 items-center">
+                        <h2 class="text-white text-md">Mobile 480p</h2>
+                        <span class="text-green-400 text-bold">149</span>
+                    </div>
+                    <div class="flex justify-between px-3 items-center">
+                        <h2 class="text-white text-md">Basic 720p</h2>
+                        <span class="text-green-400 text-bold">199</span>
+                    </div>
+                    <div class="flex justify-between px-3 items-center">
+                        <h2 class="text-white text-md">Standard 1080p</h2>
+                        <span class="text-green-400 text-bold">499</span>
+                    </div>
+                    <div class="flex justify-between px-3 items-center">
+                        <h2 class="text-white text-md">Premium 4K + HDR</h2>
+                        <span class="text-green-400 text-bold">649</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="max-w-screen-xl mx-auto text-white text-sm pt-7 max-sm:hidden">
+        <p>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to your internet service and device capabilities. Not all content is available in all resolutions. See our Terms of Use for more details.
+            Only people who live with you may use your account. Watch on 4 different devices at the same time with Premium, 2 with Standard, and 1 with Basic and Mobile.
+        </p>
+    </div>
+    <script>
+      
+        
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> 
+<script>
+    var op=document.querySelector("#open");
+    var menu=document.querySelector("#menu");
+    var clo=document.querySelector("#close");
+    op.addEventListener("click",()=>{
+        menu.classList.add("max-sm:translate-x-2")
+    })
+    clo.addEventListener("click",()=>{
+        menu.classList.remove("max-sm:translate-x-2")
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Netfilx</title>
+</head>
+
+<body>
+        <div class="w-full bg-black  overflow-hidden">
+            <div class="max-w-screen-xl mx-auto h-11 flex justify-between items-center max-sm:pt-3">
+              <h2 class="text-sky-300 text-xl max-sm:text-2xl max-sm:pl-7">Netfilx</h2>
+              <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="open">/</button>
+              <div class="flex gap-14 max-sm:flex max-sm:justify-center max-sm:gap-7 max-sm:items-center max-sm:mt-7 max-sm:w-full max-sm:h-32 max-sm:bg-black max-sm:absolute max-sm:z-[999] max-sm:-translate-y-32 max-sm:transition-transform max-sm:ease-in-out max-sm:duration-500" id="menu">
+                <form action="/getper" method="post" class="max-sm:flex max-sm:gap-1">
+                  <input class="outline-none text-sky-300 bg-transparent px-5 max-sm:text-[19px]" placeholder="Search  Movies " name="name"
+                    type="text" />
+                  <input class="text-white text-xl hover:text-sky-300 max-sm:text-2xl" type="submit" value="&#x2197;" />
+                </form>
+                <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="close">/\</button>
+                  <a class="text-sky-300 text-lg max-sm:hidden" href="/sign">Sign in</a>
+              </div>
+            </div>
+          </div>

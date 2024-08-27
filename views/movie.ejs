@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Netfilx</title>
+</head>
+
+<body>
+        <div class="w-full bg-black  overflow-hidden">
+            <div class="max-w-screen-xl mx-auto h-11 flex justify-between items-center max-sm:pt-3">
+              <h2 class="text-sky-300 text-xl max-sm:text-2xl max-sm:pl-7">Netfilx</h2>
+              <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-7" id="open">/</button>
+              <div class="flex gap-14 max-sm:flex max-sm:justify-center max-sm:gap-2 max-sm:items-center max-sm:mt-7 max-sm:w-full max-sm:h-32 max-sm:bg-black max-sm:absolute max-sm:z-[999] max-sm:-translate-y-32 max-sm:transition-transform max-sm:ease-in-out max-sm:duration-500" id="menu">
+                <form action="/getper" method="post" class="max-sm:flex max-sm:gap-1">
+                  <input class="outline-none text-sky-300 bg-transparent px-5 max-sm:text-[19px]" placeholder="Search  Movies " name="name"
+                    type="text" />
+                  <input class="text-white text-xl hover:text-sky-300 max-sm:text-2xl" type="submit" value="&#x2197;" />
+                </form>
+                <button class="hidden max-sm:text-2xl max-sm:text-bold max-sm:text-white max-sm:flex max-sm:pr-2" id="close">/\</button>
+                <% if (user) { %>
+                <a href="/profile" class="text-white bg-sky-300 text-bold rounded-full w-7 h-7 text-center text-md max-sm:mt-1"><%= user.email.charAt(0).toUpperCase() %></a>
+                <% } else { %>
+                  <a class="text-sky-300 text-lg max-sm:hidden" href="/sign">Sign in</a>
+                <% } %>
+              </div>
+            </div>
+<div class="max-w-screen-xl pt-5 mx-auto h-screen flex gap-11 max-sm:flex-col max-sm:h-fit">
+    <img class="w-1/4 h-4/5 object-cover max-sm:w-full max-sm:h-full" src="<%= film.Poster  %>" alt="">
+    <div class="flex flex-col gap-3 max-sm:px-3">
+        <h2 class="text-white text-5xl max-sm:text-3xl max-sm:flex max-sm:flex-col"><%= film.Title %> <span class="text-green-500 text-lg"><%= film.Rated  %> , <%= film.Runtime  %> min</span></h2>
+        <h2 class="text-white text-lg">Year &nbsp; &nbsp; <span class="text-green-500">   <%= film.Year  %></span></h2>
+        <div class="text-green-500 text-lg flex gap-4"><span>Action</span><span>Adventure</span><span>Sci-fi</span></div>
+        <div class="text-white w-2/3 max-sm:w-full"><%= film.Plot  %></div>
+        <div class="mt-5 flex flex-col gap-2">
+            <div class="text-white flex gap-1 max-sm:pb-2 max-sm:border-b">
+                <span class="w-24">Director</span>
+                <span><%= film.Director  %></span>
+            </div>
+            <div class="text-white flex gap-1 max-sm:pb-2 max-sm:border-b">
+                <span class="w-24">Writer</span>
+                <div class="flex gap-2 max-sm:flex-col">
+                    <span>Matt Sazama</span><span>Burk Sharpless</span><span>Clarie Parker</span>
+                </div>
+            </div>
+            <div class="text-white flex gap-1 max-sm:pb-2 max-sm:border-b">
+                <span class="w-24">Actors</span>
+                <div class="flex gap-2 max-sm:flex-col">
+                    <% if (typeof film.Actors === 'string'){ %>
+                        <% film.Actors.split(",").forEach(e => { %>
+                            <span><%= e %></span>
+                            <% }) %>
+                    <% } else { %>
+                        <% film.Actors.forEach(e => { %>
+                            <span><%= e %></span>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="max-w-screen-xl mx-auto h-screen flex justify-center items-center">
+    <div class="w-4/5 h-4/5 rounded-lg overflow-hidden ">
+        <% if (film.Video === ''){ %>
+            <h2 class="text-white text-3xl">No Video Avaiable</h2>
+        <% } else { %>
+            <iframe class="w-full h-full" src="<%= film.Video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <% } %>    
+    </div>
+</div>
+
+<%- include('partials/footer') %>
