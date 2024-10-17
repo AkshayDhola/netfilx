@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body class="bg-black">
+  <div class="w-full h-screen flex justify-center items-center" id="intro">
+    <video src="/Netflix Logo Animation.mp4" autoplay muted ></video>
+  </div>
   <div class="w-full bg-black overflow-hidden">
     <div class="max-w-screen-lg mx-auto h-11 flex justify-between items-center max-sm:pt-3 max-sm:px-7">
       <h2 class="text-sky-300 text-xl max-sm:text-2xl">Netfilx</h2>
@@ -66,7 +69,7 @@
       </div>
     </div>
   </div>
-  <div class="max-w-screen-lg mx-auto flex flex-col gap-2 max-sm:px-9 ">
+  <div class="max-w-screen-lg h-screen justify-center mx-auto flex flex-col gap-2 max-sm:px-9 ">
     <div class="flex gap-7 max-sm:flex-wrap">
       <div class="w-32 h-full rounded-md relative overflow-hidden max-sm:w-36 max-sm:h-52">
         <video class="w-full h-full" autoplay loop muted src="/images/hello.mp4"></video>
@@ -88,7 +91,6 @@
 
   <div class="w-full bg-black py-5 mt-[30vh]">
     <div class="flex justify-center items-center flex-col gap-4">
-      <h1 class="text-sky-300 text-5xl">Netfilx</h1>
       <h3 class="text-white text-6xl max-sm:text-lg">Watch here and on the big screen.</h3>
     </div>
     <div class="max-sm:hidden">
@@ -150,6 +152,13 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> 
-
+  <script>
+    const video = document.getElementById('intro'); 
+      gsap.to(video,{
+        display:'none',
+        duration:1,
+        delay:4
+      })
+  </script>
 </body>
 </html>
